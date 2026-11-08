@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard — GitHub User Finder</title>
+    <link rel="stylesheet" href="admin.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Admin Dashboard</h1>
+        <p>Visitor analytics for GitHub User Finder — private, admin only</p>
+        <button id="logout-btn" class="hidden">Logout</button>
+      </header>
+
+      <!-- Login form (shown first; dashboard is hidden until login succeeds) -->
+      <div id="login-box" class="card">
+        <h2>Admin Login</h2>
+        <p class="muted">There is no public registration. Use the seeded admin account.</p>
+        <input type="email" id="admin-email" placeholder="Admin email" autocomplete="username" />
+        <input type="password" id="admin-password" placeholder="Password" autocomplete="current-password" />
+        <button id="login-btn">Log in</button>
+        <p id="login-error" class="error hidden"></p>
+      </div>
+
+      <!-- Dashboard (hidden until GET /api/admin/me succeeds) -->
+      <div id="dashboard" class="hidden">
+        <div class="stats">
+          <div class="stat"><span>Total visitors</span><strong id="stat-total">—</strong></div>
+          <div class="stat"><span>Unique visitors</span><strong id="stat-unique">—</strong></div>
+          <div class="stat"><span>Total page views</span><strong id="stat-views">—</strong></div>
+          <div class="stat"><span>Today's visitors</span><strong id="stat-today">—</strong></div>
+          <div class="stat"><span>Last 7 days</span><strong id="stat-7d">—</strong></div>
+          <div class="stat"><span>Last 30 days</span><strong id="stat-30d">—</strong></div>
+          <div class="stat"><span>Returning visitors</span><strong id="stat-returning">—</strong></div>
+        </div>
+
+        <div class="charts">
+          <div class="card"><h3>Daily visitors (last 30 days)</h3><canvas id="chart-daily"></canvas></div>
+          <div class="card"><h3>Device distribution</h3><canvas id="chart-device"></canvas></div>
+          <div class="card"><h3>Browser distribution</h3><canvas id="chart-browser"></canvas></div>
+          <div class="card"><h3>Country distribution</h3><canvas id="chart-country"></canvas></div>
+          <div class="card"><h3>Top referrers</h3><canvas id="chart-referrer"></canvas></div>
+        </div>
+
+        <div class="card">
+          <h3>Visitors</h3>
+          <div class="filters">
+            <label>From <input type="date" id="filter-from" /></label>
+            <label>To <input type="date" id="filter-to" /></label>
+            <button id="filter-btn">Filter</button>
+            <button id="prev-page">Previous</button>
+            <span id="page-info">Page 1</span>
+            <button id="next-page">Next</button>
+          </div>
+          <table>
+            <thead>
+              <tr><th>Visitor ID</th><th>Last seen</th><th>Browser</th><th>OS</th><th>Device</th><th>Country</th><th>Referrer</th></tr>
+            </thead>
+            <tbody id="visitor-rows"><tr><td colspan="7">Loading…</td></tr></tbody>
+          </table>
+          <p class="muted">Visitor IDs are pseudonymous. No raw IP addresses are shown or stored.</p>
+        </div>
+      </div>
+    </div>
+    <script src="admin.js"></script>
+  </body>
+</html>
