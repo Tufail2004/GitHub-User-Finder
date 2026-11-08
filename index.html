@@ -98,6 +98,21 @@
       </div>
     </div>
 
+    <!-- Privacy consent banner for visitor analytics.
+         Tracking only starts after the visitor clicks Accept. -->
+    <div id="consent-banner" class="consent-banner hidden">
+      <p>
+        We use privacy-friendly analytics to count visits and see which pages
+        are popular. No raw IP address, precise location or personal data is
+        stored. You can decline and still use the site normally.
+      </p>
+      <div class="consent-buttons">
+        <button id="consent-accept">Accept</button>
+        <button id="consent-decline">Decline</button>
+      </div>
+    </div>
+
     <script src="script.js"></script>
+    <script src="analytics.js"></script>
   </body>
 </html>
