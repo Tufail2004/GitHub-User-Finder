@@ -1,0 +1,35 @@
+/* admin.css — reuses the main site's dark / purple theme */
+:root {
+  --primary-color: #a78bfa;
+  --primary-dark: #8b5cf6;
+  --bg-dark: #1a1a1a;
+  --card-bg: #252525;
+  --text-light: #f3f4f6;
+  --text-gray: #9ca3af;
+  --border-radius: 10px;
+}
+* { padding: 0; margin: 0; box-sizing: border-box; }
+body { background-color: var(--bg-dark); color: var(--text-light); font-family: sans-serif; line-height: 1.6; padding: 30px 15px; }
+.container { width: 100%; max-width: 1000px; margin: 0 auto; }
+header { text-align: center; margin-bottom: 30px; }
+h1 { color: var(--primary-color); font-size: 2rem; }
+header p { color: var(--text-gray); }
+.card { background-color: var(--card-bg); border-radius: var(--border-radius); padding: 20px; margin-bottom: 20px; }
+.hidden { display: none; }
+.muted { color: var(--text-gray); font-size: 0.9rem; }
+.error { color: #ef4444; margin-top: 10px; }
+input { width: 100%; padding: 12px 16px; margin-bottom: 10px; border-radius: var(--border-radius); border: none; background-color: rgba(255,255,255,0.07); color: var(--text-light); outline: none; }
+button { background-color: var(--primary-color); color: #000; border: none; border-radius: var(--border-radius); padding: 10px 20px; font-weight: 600; cursor: pointer; }
+button:hover { background-color: var(--primary-dark); }
+.stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 15px; margin-bottom: 20px; }
+.stat { background-color: var(--card-bg); border-radius: var(--border-radius); padding: 15px; text-align: center; }
+.stat span { display: block; color: var(--text-gray); font-size: 0.85rem; }
+.stat strong { font-size: 1.5rem; color: var(--primary-color); }
+.charts { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; }
+.filters { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; margin-bottom: 15px; }
+.filters label { color: var(--text-gray); font-size: 0.9rem; }
+.filters input { width: auto; margin-bottom: 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid rgba(255,255,255,0.08); word-break: break-all; }
+th { color: var(--primary-color); }
+@media (max-width: 600px) { .filters { flex-direction: column; align-items: stretch; } }
